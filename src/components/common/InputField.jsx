@@ -25,14 +25,16 @@ const InputField = ({ id, placeholder, onChange, data }) => {
           required
           className="border-2 border-gray-300 px-4 py-2 text-xs rounded-lg"
         />
-        <span
+        <p
           className={clsx(
-            "absolute text-xs transform translate-y-3 leading-3 left-2 transition ",
-            isFocused ? "-translate-y-5" : null
+            "absolute text-xs  leading-3 left-2 transition ",
+            isFocused === true
+              ? "transform -translate-y-4"
+              : "transform translate-y-3"
           )}
         >
           {placeholder}
-        </span>
+        </p>
       </label>
     </div>
   );
