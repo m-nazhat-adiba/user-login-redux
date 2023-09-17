@@ -21,7 +21,7 @@ const userDataSlice = createSlice({
       })
       .addCase(userData.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.data = action.payload;
+        state.data = action.payload.data;
       })
       .addCase(userData.rejected, (state, action) => {
         state.status = "failed";
