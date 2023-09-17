@@ -5,7 +5,7 @@ import UserCard from "../components/common/UserCard";
 
 const Users = () => {
   const dispatch = useDispatch();
-  const fetchedData = useSelector((state) => state.user.data.data);
+  const fetchedData = useSelector((state) => state.user.data);
 
   useEffect(() => {
     dispatch(userData());
