@@ -10,8 +10,8 @@ import { useNavigate } from "react-router";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isError, setIsError] = useState({});
   const status = useSelector((state) => state.login.status);
+  const error = useSelector((state) => state.login.error);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -44,7 +44,7 @@ const Login = () => {
         <p className="text-base">Login with Google</p>
       </button>
       <p className="text-xs my-6 text-center">or sign in with email</p>
-      <form className="flex flex-col h-full w-full gap-6">
+      <form className="flex flex-col h-1/2 w-full gap-6">
         <InputField
           data={email}
           onChange={handleChangeEmail}
@@ -58,12 +58,19 @@ const Login = () => {
           placeholder="Password"
         />
         <div className="flex flex-grow  flex-col w-full">
-          <p className={clsx("text-red-600", isError ? "block" : "hidden")}>
-            {isError.message}
+          <p
+            className={clsx(
+              "text-red-600 text-center",
+              error ? "block" : "hidden"
+            )}
+          >
+            {error}
           </p>
-          <Button target={handleSubmit} variant="primary">
-            Log In
-          </Button>
+          <div className="flex flex-grow items-end">
+            <Button target={handleSubmit} variant="primary">
+              Log In
+            </Button>
+          </div>
         </div>
       </form>
     </div>
